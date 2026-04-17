@@ -1,26 +1,47 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 CREATE TABLE Cart (
-  id int(11) NOT NULL,
-  orderId int(11) NOT NULL,
-  session varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    orderId INTEGER NOT NULL,
+    session VARCHAR(31) NOT NULL,
+    cartId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
 
 CREATE TABLE CartItem (
-  id int(11) NOT NULL,
-  cartId int(11) NOT NULL,
-  productId int(11) NOT NULL,
-  amount int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    cartId INTEGER NOT NULL,
+    productId INTEGER NOT NULL,
+    amount INTEGER NOT NULL,
+    itemId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
 
 CREATE TABLE Categories (
-  id int(11) NOT NULL,
-  name varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    name VARCHAR(255) NOT NULL,
+    categoryId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
 
-INSERT INTO Categories ("id", "name") VALUES
+CREATE TABLE Orders (
+    session VARCHAR(31) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(255) NOT NULL,
+    time DATETIME NOT NULL,
+    orderId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
+
+CREATE TABLE Producers (
+    name VARCHAR(255) NOT NULL,
+    producerId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
+
+CREATE TABLE Products (
+    producerId INTEGER NOT NULL,
+    categoryId INTEGER NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    stock INTEGER NOT NULL,
+    unit VARCHAR(7) NOT NULL,
+    prize DECIMAL(15,7) NOT NULL,
+    description TEXT NOT NULL,
+    productId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
+
+INSERT INTO Categories (categoryId, name) VALUES
 (1, "Liha"),
 (2, "Kala"),
 (3, "Viljatuotteet"),
@@ -28,21 +49,7 @@ INSERT INTO Categories ("id", "name") VALUES
 (5, "Juustot"),
 (6, "Muut tuotteet");
 
-CREATE TABLE "orders" (
-  "id" int(11) NOT NULL,
-  "session" varchar(30) NOT NULL,
-  "name" varchar(200) NOT NULL,
-  "email" varchar(200) NOT NULL,
-  "phone" varchar(30) NOT NULL,
-  "datetime" datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE "producers" (
-  "id" int(11) NOT NULL,
-  "name" varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO "producers" ("id", "name") VALUES
+INSERT INTO Producers (producerId, name) VALUES
 (1, "Ellun kanat"),
 (2, "Luomuvilja Oy"),
 (3, "Sysimetsän hunajatila"),
@@ -54,18 +61,7 @@ INSERT INTO "producers" ("id", "name") VALUES
 (9, "Metsälläkävijät Osuuskunta"),
 (10, "Munkkilan mäkijuusto");
 
-CREATE TABLE "products" (
-  "id" int(11) NOT NULL,
-  "producer_id" int(11) NOT NULL,
-  "category_id" int(11) NOT NULL,
-  "name" varchar(200) NOT NULL,
-  "stock" int(11) NOT NULL,
-  "unit" varchar(5) NOT NULL,
-  "prize" decimal(10,2) NOT NULL,
-  "description" text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO "products" ("id", "producer_id", "category_id", "name", "stock", "unit", "prize", "description") VALUES
+INSERT INTO Products (productId, producerId, categoryId, name, stock, unit, prize, description) VALUES
 (1, 5, 2, "Rotunaudan sisäfilee", 15, "kg", "52.00", "Sydänmaan Highlander luomulihasta sisäfilee, n. 800g. Kilohinta."),
 (2, 5, 1, "Rotukarjan paistisuikaleet", 13, "kg", "46.00", "Rotukarjan ulkofileestä tehty paistisuikale. Paketissa 1kg."),
 (3, 1, 1, "Kalkkunan ohut schnitzel ", 57, "kg", "4.90", "Ohueksi moukaroidut kalkkunaleike 4kpl ja 320g paketti"),
@@ -101,40 +97,3 @@ INSERT INTO "products" ("id", "producer_id", "category_id", "name", "stock", "un
 (33, 8, 3, "Tattarijauho, luomu", 30, "kg", "4.20", "Sopii rieskojen, leipästen, piirakoiden, torttujen, kakkujen ja muiden leivonnaisten leivontaan."),
 (34, 9, 1, "Hirvenpaisti", 20, "kg", "17.20", "Raakakypsytetty hirvenpaisti n. 800g paloina. Kilohinta"),
 (35, 10, 5, "Gouda", 32, "kpl", "7.20", "Mieto, pitkään kypsennetty gouda 500g paketissa");
-
-ALTER TABLE "cart"
-  ADD PRIMARY KEY ("id");
-
-ALTER TABLE "cart_item"
-  ADD PRIMARY KEY ("id");
-
-ALTER TABLE "categories"
-  ADD PRIMARY KEY ("id");
-
-ALTER TABLE "orders"
-  ADD PRIMARY KEY ("id");
-
-ALTER TABLE "producers"
-  ADD PRIMARY KEY ("id");
-
-ALTER TABLE "products"
-  ADD PRIMARY KEY ("id");
-
-ALTER TABLE "cart"
-  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE "cart_item"
-  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE "categories"
-  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
-ALTER TABLE "orders"
-  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE "producers"
-  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
-ALTER TABLE "products"
-  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-COMMIT;
