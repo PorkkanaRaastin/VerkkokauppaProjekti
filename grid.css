@@ -1,0 +1,8 @@
+.gridLayout {
+    display: grid;
+    padding: 25% 0% 25% 0%;
+}
+
+.gridLayout div.product {
+    grid-area: product;
+}
