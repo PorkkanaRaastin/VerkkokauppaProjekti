@@ -1,25 +1,11 @@
-CREATE TABLE Cart (
-    orderId INTEGER NOT NULL,
-    session VARCHAR(31) NOT NULL,
-    cartId INTEGER PRIMARY KEY AUTO_INCREMENT,
-    FOREIGN KEY orderId
-    REFERENCES Orders(orderId)
-);
-
-CREATE TABLE CartItem (
-    cartId INTEGER NOT NULL,
-    productId INTEGER NOT NULL,
-    amount INTEGER NOT NULL,
-    itemId INTEGER PRIMARY KEY AUTO_INCREMENT,
-    FOREIGN KEY cartID
-    REFERENCES Cart(cartId),
-    FOREIGN KEY productId
-    REFERENCES Product(productId)
-);
-
 CREATE TABLE Categories (
     name VARCHAR(255) NOT NULL,
     categoryId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
+
+CREATE TABLE Producers (
+    name VARCHAR(255) NOT NULL,
+    producerId INTEGER PRIMARY KEY AUTO_INCREMENT
 );
 
 CREATE TABLE Orders (
@@ -31,9 +17,12 @@ CREATE TABLE Orders (
     orderId INTEGER PRIMARY KEY AUTO_INCREMENT
 );
 
-CREATE TABLE Producers (
-    name VARCHAR(255) NOT NULL,
-    producerId INTEGER PRIMARY KEY AUTO_INCREMENT
+CREATE TABLE Cart (
+    orderId INTEGER NOT NULL,
+    session VARCHAR(31) NOT NULL,
+    cartId INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY (orderId)
+    REFERENCES Orders(orderId)
 );
 
 CREATE TABLE Products (
@@ -45,10 +34,21 @@ CREATE TABLE Products (
     prize DECIMAL(15,7) NOT NULL,
     description TEXT NOT NULL,
     productId INTEGER PRIMARY KEY AUTO_INCREMENT,
-    FOREIGN KEY producerId
+    FOREIGN KEY (producerId)
     REFERENCES Producer(producerId),
-    FOREIGN KEY categoryId
+    FOREIGN KEY (categoryId)
     REFERENCES Categories(categoryId)
+);
+
+CRECREATE TABLE CartItem (
+    cartId INTEGER NOT NULL,
+    productId INTEGER NOT NULL,
+    amount INTEGER NOT NULL,
+    itemId INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY (cartID)
+    REFERENCES Cart(cartId),
+    FOREIGN KEY (productId)
+    REFERENCES Product(productId)
 );
 
 INSERT INTO Categories (categoryId, name) VALUES
