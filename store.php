@@ -7,7 +7,11 @@
     </head>
     <body>
         <div class="gridLayout">
-            pelaa mindustry
+            <div id="productDisplay">
+                <?php
+                    $query = "SELECT Product.name, Category.name, Product.description, Product.prize FROM Product INNER JOIN Category ON "
+                ?>
+            </div>
         </div>
     </body>
 </html>

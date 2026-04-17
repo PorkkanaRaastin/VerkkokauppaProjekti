@@ -1,14 +1,20 @@
 CREATE TABLE Cart (
     orderId INTEGER NOT NULL,
     session VARCHAR(31) NOT NULL,
-    cartId INTEGER PRIMARY KEY AUTO_INCREMENT
+    cartId INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY orderId
+    REFERENCES Orders(orderId)
 );
 
 CREATE TABLE CartItem (
     cartId INTEGER NOT NULL,
     productId INTEGER NOT NULL,
     amount INTEGER NOT NULL,
-    itemId INTEGER PRIMARY KEY AUTO_INCREMENT
+    itemId INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY cartID
+    REFERENCES Cart(cartId),
+    FOREIGN KEY productId
+    REFERENCES Product(productId)
 );
 
 CREATE TABLE Categories (
@@ -38,7 +44,11 @@ CREATE TABLE Products (
     unit VARCHAR(7) NOT NULL,
     prize DECIMAL(15,7) NOT NULL,
     description TEXT NOT NULL,
-    productId INTEGER PRIMARY KEY AUTO_INCREMENT
+    productId INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY producerId
+    REFERENCES Producer(producerId),
+    FOREIGN KEY categoryId
+    REFERENCES Categories(categoryId)
 );
 
 INSERT INTO Categories (categoryId, name) VALUES
