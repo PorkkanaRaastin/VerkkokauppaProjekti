@@ -8,17 +8,15 @@
 </head>
 <body>
 
-  <div class="hero-section"></div>
+  <div class="bgimage">
+        <h1>Tuoretta lähiruokaa suoraan kotiovellesi!</h1>
+        <p>Tuottajatorilta - Kätevä palvelu vastuullisten lähiruokien hankintaan.</p>
+        <button class="button"><a href="store.php">Selaa tuotteita</a></button>
+</div>
 
-  <header>
-    <img src="images/ALTERNATE LOGO.png" alt="Tuottajatori logo" class="logo">
-    <h1>Tuoretta lähiruokaa suoraan kotiovellesi!</h1>
-    <p>Tuottajatorilta - Kätevä palvelu vastuullisten lähiruokien hankintaan.</p>
-    <button class="button"><a href="store.php">Selaa tuotteita</a></button>
-  </header>
 
   <section id="how-it-works">
-    <h2>Kuinka Se Toimii</h2>
+    <h2>Kuinka Se Toimii?</h2>
     <ol class="steps-grid">
         <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil" viewBox="0 0 16 16">

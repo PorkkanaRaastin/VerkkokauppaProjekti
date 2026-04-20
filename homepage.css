@@ -1,35 +1,33 @@
+/*Rasmus*/
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   color: #333;
 }
 
-<<<<<<< HEAD
-body, html {
-    width: 100%;
-    overflow-x: hidden;
-=======
-/* IMAGE ONLY ON THE HERO AREA */
-.hero-section {
-  background-image: url("images/homephoto.png");
+.bgimage {
+  background-image: url("images/benjamin-davies-Zm2n2O7Fph4-unsplash.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 60px 20px;
   height: 250px;
-  /* adjust height */
->>>>>>> c49b39968c1a1a382d0438f3c73019eee5f22fe0
+  text-align: center;
+  color: white;
+}
+
+.bgimage h1 {
+  margin-top: 50px;
+}
+
+.bgimage h1, button, p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .button a {
     text-decoration: none;
     color: white;
-}
-
-.hero-section {
-    background-image: url("images/homephoto.png");
-    background-size: cover;
-    background-position: center;
-    height: 250px;
 }
 
 .logo {
@@ -45,7 +43,7 @@ header{
 }
 
 button {
-  background-color: #403d3d;
+  background-color: #403d3d4e;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -82,10 +80,8 @@ button {
   text-align: center;
 }
 
-/* 7. kohta keskelle */
 .steps-grid .center-last {
   grid-column: 2 / 3;
-  /* keskimmäinen sarake */
 }
 
 
