@@ -35,12 +35,12 @@ CREATE TABLE Products (
     description TEXT NOT NULL,
     productId INTEGER PRIMARY KEY AUTO_INCREMENT,
     FOREIGN KEY (producerId)
-    REFERENCES Producer(producerId),
+    REFERENCES Producers(producerId),
     FOREIGN KEY (categoryId)
     REFERENCES Categories(categoryId)
 );
 
-CRECREATE TABLE CartItem (
+CREATE TABLE CartItem (
     cartId INTEGER NOT NULL,
     productId INTEGER NOT NULL,
     amount INTEGER NOT NULL,
@@ -48,7 +48,7 @@ CRECREATE TABLE CartItem (
     FOREIGN KEY (cartID)
     REFERENCES Cart(cartId),
     FOREIGN KEY (productId)
-    REFERENCES Product(productId)
+    REFERENCES Products(productId)
 );
 
 INSERT INTO Categories (categoryId, name) VALUES
