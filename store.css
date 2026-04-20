@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  text-align: center;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+.container {
+  padding: 30px;
+}
+.search {
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 15px;
+}
+.filters {
+  margin-bottom: 20px;
+}
+.products {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  gap: 20px;
+}
+.card {
+  background: white;
+  padding: 15px;
+  max-width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.card h3 {
+  margin: 0;
+}
+.category {
+  color: gray;
+  font-size: 14px;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+button {
+  background: #555;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #666;
+  color: white;
+  margin-top: 30px;
+}
+main {
+    padding: 15px;
+}

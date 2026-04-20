@@ -31,3 +31,12 @@
 .productContainer .button {
     grid-area: button;
 }
+
+#productDisplay {
+    width: 100%;
+    grid-area: productDisplay;
+}
+
+.grid-area #store {
+    grid-template-areas: "productDisplay"
+}
