@@ -11,9 +11,10 @@
   <div class="hero-section"></div>
 
   <header>
+    <img src="images/ALTERNATE LOGO.png" alt="Tuottajatori logo" class="logo">
     <h1>Tuoretta lähiruokaa suoraan kotiovellesi!</h1>
     <p>Tuottajatorilta - Kätevä palvelu vastuullisten lähiruokien hankintaan.</p>
-    <button>Selaa tuotteita</button>
+    <button class="button"><a href="store.php">Selaa tuotteita</a></button>
   </header>
 
   <section id="how-it-works">
@@ -68,6 +69,6 @@
     </section>
 
 
-    <footer>Toteutti: Rasmus</footer>
+    <footer>-</footer>
 </body>
 </html>

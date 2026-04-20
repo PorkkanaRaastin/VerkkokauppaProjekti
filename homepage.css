@@ -4,16 +4,31 @@ body {
   color: #333;
 }
 
-/* IMAGE ONLY ON THE HERO AREA */
-.hero-section {
-  background-image: url("images/homephoto.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 250px; /* adjust height */
+body, html {
+    width: 100%;
+    overflow-x: hidden;
 }
 
-header {
+.button a {
+    text-decoration: none;
+    color: white;
+}
+
+.hero-section {
+    background-image: url("images/homephoto.png");
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    text-align: left;
+}
+
+
+header{
   text-align: center;
   padding: 40px;
 }
@@ -73,7 +88,18 @@ button {
 
 footer {
   background-color: #403d3d;
-  color: white;
-  text-align: center;
+  color: #403d3d;
   padding: 20px;
+}
+
+/* Responsiivisuus tekoälyn avulla */
+@media (max-width: 600px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps-grid .center-last {
+        grid-column: auto;
+        width: 100%;
+    }
 }
