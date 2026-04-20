@@ -4,9 +4,20 @@ body {
   color: #333;
 }
 
+<<<<<<< HEAD
 body, html {
     width: 100%;
     overflow-x: hidden;
+=======
+/* IMAGE ONLY ON THE HERO AREA */
+.hero-section {
+  background-image: url("images/homephoto.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 250px;
+  /* adjust height */
+>>>>>>> c49b39968c1a1a382d0438f3c73019eee5f22fe0
 }
 
 .button a {
@@ -43,47 +54,48 @@ button {
 }
 
 .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    list-style-position: inside;
-    padding: 0;
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-    list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  list-style-position: inside;
+  padding: 0;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  list-style: none;
 }
 
 .steps-grid li svg {
-    display: block;
-    margin: 0 auto 8px auto;
-    width: 32px;  
-    height: 32px;
-    background-color: #68656588;
-    padding: 5px;
-    border-radius: 7px;
-    column-rule: white;
+  display: block;
+  margin: 0 auto 8px auto;
+  width: 32px;
+  height: 32px;
+  background-color: #68656588;
+  padding: 5px;
+  border-radius: 7px;
+  column-rule: white;
 }
 
 .steps-grid li {
-    padding: 12px;
-    border-radius: 8px;
-    text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 /* 7. kohta keskelle */
 .steps-grid .center-last {
-    grid-column: 2 / 3; /* keskimmäinen sarake */
+  grid-column: 2 / 3;
+  /* keskimmäinen sarake */
 }
 
 
 #how-it-works h2 {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 #how-it-works {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 footer {
