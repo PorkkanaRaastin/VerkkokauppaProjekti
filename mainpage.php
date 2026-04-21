@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
+    <div class="bgimage">
+        <nav>
+        <img src="images/ALTERNATE LOGO_lapinakuva.png" alt="" class="nav-logo">
+        <h3>Hei, "käyttäjänimi"</h3>
+        <button>Kirjaudu ulos</button>
+        </nav>
 
-  <div class="bgimage">
         <h1>Tuoretta lähiruokaa suoraan kotiovellesi!</h1>
         <p>Tuottajatorilta - Kätevä palvelu vastuullisten lähiruokien hankintaan.</p>
-        <button class="button"><a href="store.php">Selaa tuotteita</a></button>
-</div>
-
+        <button class="store-button"><a href="store.php">Selaa tuotteita</a></button>
+    </div>
 
   <section id="how-it-works">
     <h2>Kuinka Se Toimii?</h2>
@@ -67,6 +71,6 @@
     </section>
 
 
-    <footer>-</footer>
+    <footer>By: Jesse and Rasmus</footer>
 </body>
 </html>
