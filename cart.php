@@ -28,8 +28,7 @@
     <div class="container">
         <section class="cart-items">
         <?php
-            // TODO: get the actual user ID from $_SESSION
-            $userId=1;
+            $userId=$_SESSION["userId"];
             $query="SELECT Cart.cartId FROM Cart WHERE Cart.userId LIKE '$userId'";
             $cartId=$link->query($query)->fetch_assoc()["cartId"];
             $orderId="SELECT Cart.orderId FROM Cart WHERE Cart.cartId LIKE '$cartId'";

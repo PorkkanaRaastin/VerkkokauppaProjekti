@@ -61,8 +61,7 @@
                     };};
                     if(isset($_POST["addItem"])){
                         $productId=$_POST["productId"];
-                        // TODO: get the actual userId from session
-                        $userId=1;
+                        $userId=$_SESSION["userId"];
                         $query="SELECT Cart.cartId FROM Cart WHERE Cart.userId LIKE '$userId'";
                         $result=$link->query($query)->fetch_assoc();
                         if($result->num_rows==0){
@@ -73,10 +72,13 @@
                             $query="SELECT Cart.orderId FROM Cart WHERE Cart.userId LIKE '$userId'";
                             $orderId=$link->query($query)->fetch_assoc()["orderId"];
                         };
-                        if(TRUE){// If the item is not in the cart
-                            // Add a new item to the cart
+                        if(TRUE){
+                            $query="INSERT INTO CartItem (cartId, productId, amount) VALUES ('$orderId', '$productId', '1')";
                         }else{
-                            // Add +1 to the amount
+                            $query="SELECT CartItem.amount FROM CartItem WHERE CartItem.cartId LIKE '$orderId' AND CartItem.productId LIKE '$productId'";
+                            $amount=intval($link->query($query)->fetch_assoc()["amount"])+1;
+                            $query="UPDATE CartItem SET CartItem.amount = '$amount' WHERE CartItem.productId LIKE '$productId' AND cartId LIKE '$orderId'";
+                            $result=$link->query($query);
                         };
                     };
                 ?>  
