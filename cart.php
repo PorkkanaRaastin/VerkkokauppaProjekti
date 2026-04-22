@@ -30,7 +30,10 @@
         <?php
             $userId=$_SESSION["userId"];
             $query="SELECT Cart.cartId FROM Cart WHERE Cart.userId LIKE '$userId'";
-            $cartId=$link->query($query)->fetch_assoc()["cartId"];
+            $result=$link->query($query);
+            if($result->num_rows!=0){
+                $cartId=$result->fetch_assoc()["cartId"];
+            };
             $orderId="SELECT Cart.orderId FROM Cart WHERE Cart.cartId LIKE '$cartId'";
             $orderId=$link->query($query)->fetch_assoc()["orderId"];
             $query="SELECT CartItem.productId, CartItem.amount FROM CartItem WHERE CartItem.cartId LIKE '$cartId'";
@@ -61,11 +64,25 @@
         </section>
 
         <section class="order-form">
-            <h2>Tilaustiedot</h2>
-            <input type="text" placeholder="Nimi">
-            <input type="email" placeholder="Sähköpostiosoite">
-            <input type="tel" placeholder="Puhelinnumero">
-            <button>Tee tilaus</button>
+            <form action="" method="post">
+                <h2>Tilaustiedot</h2>
+                <input type="text" placeholder="Nimi">
+                <input type="email" placeholder="Sähköpostiosoite">
+                <input type="tel" placeholder="Puhelinnumero">
+                <button type="submit" name="sendOrder">Tee tilaus</button>
+            </form>
+            <?php
+                if(isset($_POST["sendOrder"])){
+                    $userId=$_SESSION["userId"];
+                    $query="SELECT Cart.cartId, Cart.orderId FROM Cart WHERE Cart.userId LIKE $userId";
+                    $result=$link->query($query);
+                    if($result->num_rows==0){
+                        echo"Ostoskori on tyhjä";
+                    }else{
+                        // update the cart-item
+                    };
+                };
+            ?>
         </section>
     </div>
 </main>

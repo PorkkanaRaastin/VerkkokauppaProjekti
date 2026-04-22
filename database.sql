@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS onlinestore;
-CREATE DATABASE onlinestore;
-
 CREATE TABLE User (
     username VARCHAR(63) NOT NULL,
     password VARCHAR(2047) NOT NULL,

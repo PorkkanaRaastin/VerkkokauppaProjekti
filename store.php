@@ -63,11 +63,13 @@
                         $productId=$_POST["productId"];
                         $userId=$_SESSION["userId"];
                         $query="SELECT Cart.cartId FROM Cart WHERE Cart.userId LIKE '$userId'";
-                        $result=$link->query($query)->fetch_assoc();
+                        $result=$link->query($query);
                         if($result->num_rows==0){
-                            $query="INSERT INTO Orders (time) VALUES GETDATE()";
+                            $time = date("Y")."-".date("m")."-".date("d");
+                            $query="INSERT INTO Orders (time) VALUES ('$time')";
                             $result=$link->query($query);
-                            $orderId=$link->$link->insert_id;
+                            $orderId=$link->insert_id;
+                            $query="INSERT INTO Cart (orderId, userId) VALUES ('$orderId', '$userId')";
                         }else{
                             $query="SELECT Cart.orderId FROM Cart WHERE Cart.userId LIKE '$userId'";
                             $orderId=$link->query($query)->fetch_assoc()["orderId"];

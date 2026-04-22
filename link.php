@@ -7,4 +7,5 @@
     if($link->connect_error) {
         die("Connection error: ".$link->connect_error);
     };
+    $link->set_charset("utf8");
 ?>
