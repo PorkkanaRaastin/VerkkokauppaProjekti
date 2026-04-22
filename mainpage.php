@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tuottajatori</title>
   <link rel="stylesheet" href="homepage.css">
+  <link rel="icon" href="images/FAVICON.png" type="image/png">
 </head>
 <body>
     <div class="bgimage">
