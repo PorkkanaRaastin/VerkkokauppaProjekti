@@ -53,9 +53,11 @@ CREATE TABLE CartItem (
     amount INTEGER NOT NULL,
     itemId INTEGER PRIMARY KEY AUTO_INCREMENT,
     FOREIGN KEY (cartID)
-    REFERENCES Cart(cartId),
+    REFERENCES Cart(cartId)
+    ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (productId)
     REFERENCES Products(productId)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO Categories (categoryId, name) VALUES

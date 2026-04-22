@@ -59,7 +59,21 @@
                         $productId=$_POST["productId"];
                         // TODO: get the actual userId from session
                         $userId=1;
-                        $query="SELECT"
+                        $query="SELECT Cart.cartId FROM Cart WHERE Cart.userId LIKE '$userId'";
+                        $result=$link->query($query)->fetch_assoc();
+                        if($result->num_rows==0){
+                            $query="INSERT INTO Orders (time) VALUES GETDATE()";
+                            $result=$link->query($query);
+                            $orderId=$link->$link->insert_id;
+                        }else{
+                            $query="SELECT Cart.orderId FROM Cart WHERE Cart.userId LIKE '$userId'";
+                            $orderId=$link->query($query)->fetch_assoc()["orderId"];
+                        };
+                        if(TRUE){// If the item is not in the cart
+                            // Add a new item to the cart
+                        }else{
+                            // Add +1 to the amount
+                        };
                     };
                 ?>  
             </div>
