@@ -1,3 +1,6 @@
+<?php
+    include_once("link.php");
+?>
 <!DOCTYPE html>
 <html lang="fi">
 <head>

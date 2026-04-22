@@ -18,19 +18,18 @@ CREATE TABLE Producers (
 );
 
 CREATE TABLE Orders (
-    userId INTEGER NOT NULL,
     time DATETIME NOT NULL,
-    orderId INTEGER PRIMARY KEY AUTO_INCREMENT,
-    FOREIGN KEY (userId)
-    REFERENCES User(userId)
+    orderId INTEGER PRIMARY KEY AUTO_INCREMENT
 );
 
 CREATE TABLE Cart (
     orderId INTEGER NOT NULL,
-    session VARCHAR(31) NOT NULL,
+    userId INTEGER NOT NULL,
     cartId INTEGER PRIMARY KEY AUTO_INCREMENT,
     FOREIGN KEY (orderId)
-    REFERENCES Orders(orderId)
+    REFERENCES Orders(orderId),
+    FOREIGN KEY (userId)
+    REFERENCES User(userId)
 );
 
 CREATE TABLE Products (
