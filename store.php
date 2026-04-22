@@ -31,7 +31,7 @@
             </div>
             <div class="products">
                 <?php
-                    $query="SELECT Products.name, Products.categoryId, Products.description, Products.prize FROM Products";
+                    $query="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products";
                     $result=$link->query($query);
                     if($result->num_rows==0){
                         echo"No results.";
@@ -40,6 +40,7 @@
                         $targetId=$data["categoryId"];
                         $category=$link->query("SELECT name FROM Categories WHERE categoryId = '$targetId'")->fetch_assoc()["name"];
                         $description=$data["description"];
+                        $productId=$data["productId"];
                         $prize=round(floatval($data["prize"]),2)."€";
                         echo"<div class='card'>
                         <h3>$name</h3>
@@ -47,10 +48,19 @@
                         <span>$description</span>
                         <div class='bottom'>
                         <span>$prize</span>
-                        <button>Lisää ostoskoriin</button>
+                        <form action='' method='post'>
+                        <input type='hidden' value='$productId' name='productId'>
+                        <button type='submit' name='addItem'>Lisää ostoskoriin</button>
+                        </form>
                         </div>
                         </div>";
                     };};
+                    if(isset($_POST["addItem"])){
+                        $productId=$_POST["productId"];
+                        // TODO: get the actual userId from session
+                        $userId=1;
+                        $query="SELECT"
+                    };
                 ?>  
             </div>
         </main>
