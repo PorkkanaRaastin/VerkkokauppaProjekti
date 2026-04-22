@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Verkkokauppa</title>
-        <link rel="stylesheet" href="store.css">
+        <link rel="stylesheet" href="styles/store.css">
     </head>
     <body>
         <main>
