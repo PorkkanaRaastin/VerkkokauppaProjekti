@@ -22,6 +22,8 @@
     <h1>Ostoskori</h1>
 
     <div class="container">
+        <?php
+        ?>
         <section class="cart-items">
             <div class="item">
                 <h3>Tuotteen Nimi</h3>
