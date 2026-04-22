@@ -1,5 +1,9 @@
 <?php
-    include_once"link.php";
+    include_once("link.php");
+    session_start();
+    if(!isset($_SESSION["userId"])){
+        header("Location: login.php");
+    };
 ?>
 <!DOCTYPE html>
 <html lang="fi">
