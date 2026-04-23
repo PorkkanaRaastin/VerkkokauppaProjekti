@@ -83,7 +83,7 @@
                             $result=$link->query($query);
                         };
                     };
-                ?>  
+                ?>
             </div>
         </main>
     </body>
