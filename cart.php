@@ -4,6 +4,24 @@
     if(!isset($_SESSION["userId"])){
         header("Location: login.php");
     };
+    if(isset($_POST["sendOrder"])){
+        $name=$_POST["name"];
+        $email=$_POST["email"];
+        $phone=$_POST["phone"];
+        if(empty($name)||empty($email)||empty($phone)){
+            echo"Täytä kaikki kentät";
+        }else{
+            $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
+            $result=$link->query($query);
+            if($result->num_rows==0){
+                echo"Ostoskori on tyhjä";
+            }else{
+                $orderId=$result->fetch_assoc()["orderId"];
+                $query="UPDATE Orders SET Orders.status = 'SENT' WHERE Orders.orderId LIKE '$orderId'";
+                $result=$link->query($query);
+            };
+        };
+    };
 ?>
 <!DOCTYPE html>
 <html lang="fi">
@@ -59,28 +77,23 @@
                 <p>$category</p>
                 <div class='row'>
                 <input type='number' value='$amount' min='1'>
-                <span>$prize</span>
+                <span>$prize €</span>
                 </div>
                 </div>";
                 $totalPrize+=($prize*$amount);
             };};
-            echo"<div class='total'>$totalPrize</div>";
+            echo"<div class='total'>$totalPrize €</div>";
         ?>
         </section>
 
         <section class="order-form">
             <form action="" method="post">
                 <h2>Tilaustiedot</h2>
-                <input type="text" placeholder="Nimi">
-                <input type="email" placeholder="Sähköpostiosoite">
-                <input type="tel" placeholder="Puhelinnumero">
+                <input name="name" type="text" placeholder="Nimi">
+                <input name="email" type="email" placeholder="Sähköpostiosoite">
+                <input name="phone" type="tel" placeholder="Puhelinnumero">
                 <button type="submit" name="sendOrder">Tee tilaus</button>
             </form>
-            <?php
-                if(isset($_POST["sendOrder"])){
-                    // set order status to SENT
-                }
-            ?>
         </section>
     </div>
 </main>
