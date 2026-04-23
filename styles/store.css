@@ -2,10 +2,10 @@
 /*Tekoäly auttanut pohjan (lähinnä tuoteruudukon) kanssa ja itse muokattu*/
 
 body {
-  font-family: cursive, sans-serif;
-  margin: 0;
-  background: #f5f5f5;
-  text-align: center;
+    font-family: cursive, sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+    text-align: center;
 }
 
 .logo {
@@ -15,75 +15,75 @@ body {
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 30px;
-  background: white;
-  border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+    background: white;
+    border-bottom: 1px solid #ddd;
 }
 
 .header a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 
 header svg {
-  margin-top: 7px;
+    margin-top: 7px;
 }
 .container {
-  padding: 30px;
+    padding: 30px;
 }
 .search {
-  padding: 10px;
-  width: 300px;
-  margin-bottom: 15px;
-  border-radius: 7px;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.324);
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.324);
 }
 .filters {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .products {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(250px, 2fr));
-  justify-content: center;
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px, 2fr));
+    justify-content: center;
+    gap: 20px;
 }
 .card {
-  background: white;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.324);
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.324);
 }
 .card h3 {
-  margin: 0;
+    margin: 0;
 }
 .category {
-  color: gray;
-  font-size: 14px;
+    color: gray;
+    font-size: 14px;
 }
 .bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 button {
-  background: #555;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  padding: 6px 12px;
-  cursor: pointer;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.324);
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 12px;
+    cursor: pointer;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.324);
 }
 footer {
-  text-align: center;
-  padding: 20px;
-  background: #666;
-  color: white;
-  margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background: #666;
+    color: white;
+    margin-top: 30px;
 }
 main {
     padding: 15px;
