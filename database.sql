@@ -16,17 +16,16 @@ CREATE TABLE Producers (
 
 CREATE TABLE Orders (
     time DATETIME NOT NULL,
+    userId INTEGER NOT NULL,
+    status VARCHAR(7) NOT NULL,
     orderId INTEGER PRIMARY KEY AUTO_INCREMENT
 );
 
 CREATE TABLE Cart (
     orderId INTEGER NOT NULL,
-    userId INTEGER NOT NULL,
     cartId INTEGER PRIMARY KEY AUTO_INCREMENT,
     FOREIGN KEY (orderId)
-    REFERENCES Orders(orderId),
-    FOREIGN KEY (userId)
-    REFERENCES User(userId)
+    REFERENCES Orders(orderId)
 );
 
 CREATE TABLE Products (
@@ -44,13 +43,13 @@ CREATE TABLE Products (
     REFERENCES Categories(categoryId)
 );
 
-CREATE TABLE CartItem (
-    cartId INTEGER NOT NULL,
+CREATE TABLE OrderItem (
+    orderId INTEGER NOT NULL,
     productId INTEGER NOT NULL,
     amount INTEGER NOT NULL,
     itemId INTEGER PRIMARY KEY AUTO_INCREMENT,
-    FOREIGN KEY (cartID)
-    REFERENCES Cart(cartId)
+    FOREIGN KEY (orderId)
+    REFERENCES Orders(orderId)
     ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (productId)
     REFERENCES Products(productId)
