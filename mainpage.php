@@ -24,7 +24,9 @@
                     $username=$link->query($query)->fetch_assoc()["username"];
                     echo"<h3>Hei, $username</h3>";
                 ?>
-                <button>Kirjaudu ulos</button>
+                <a href="logout.php">
+                    <button>Kirjaudu ulos</button>
+                </a>
             </nav>
             <h1>Tuoretta lähiruokaa suoraan kotiovellesi!</h1>
             <p>Tuottajatorilta - Kätevä palvelu vastuullisten lähiruokien hankintaan.</p>

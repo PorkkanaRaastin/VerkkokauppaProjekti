@@ -56,8 +56,8 @@
         <header>
             <div class="logo">LOGO</div>
             <nav>
-                <a href="#">Etusivu</a>
-                <div class="cart">🛒 2</div>
+                <a href="mainpage.php">Etusivu</a>
+                <a href="store.php">Kauppa</a>
             </nav>
         </header>
         <main>
