@@ -14,7 +14,6 @@
         <h3>Hei, "käyttäjänimi"</h3>
         <button>Kirjaudu ulos</button>
         </nav>
-
         <h1>Tuoretta lähiruokaa suoraan kotiovellesi!</h1>
         <p>Tuottajatorilta - Kätevä palvelu vastuullisten lähiruokien hankintaan.</p>
         <button class="store-button"><a href="store.php">Selaa tuotteita</a></button>
