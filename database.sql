@@ -1,3 +1,9 @@
+CREATE TABLE User (
+    username VARCHAR(63) NOT NULL,
+    password VARCHAR(2047) NOT NULL,
+    userId INTEGER PRIMARY KEY AUTO_INCREMENT
+);
+
 CREATE TABLE Categories (
     name VARCHAR(255) NOT NULL,
     categoryId INTEGER PRIMARY KEY AUTO_INCREMENT
@@ -9,20 +15,18 @@ CREATE TABLE Producers (
 );
 
 CREATE TABLE Orders (
-    session VARCHAR(31) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) NOT NULL,
     time DATETIME NOT NULL,
     orderId INTEGER PRIMARY KEY AUTO_INCREMENT
 );
 
 CREATE TABLE Cart (
     orderId INTEGER NOT NULL,
-    session VARCHAR(31) NOT NULL,
+    userId INTEGER NOT NULL,
     cartId INTEGER PRIMARY KEY AUTO_INCREMENT,
     FOREIGN KEY (orderId)
-    REFERENCES Orders(orderId)
+    REFERENCES Orders(orderId),
+    FOREIGN KEY (userId)
+    REFERENCES User(userId)
 );
 
 CREATE TABLE Products (
@@ -46,9 +50,11 @@ CREATE TABLE CartItem (
     amount INTEGER NOT NULL,
     itemId INTEGER PRIMARY KEY AUTO_INCREMENT,
     FOREIGN KEY (cartID)
-    REFERENCES Cart(cartId),
+    REFERENCES Cart(cartId)
+    ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (productId)
     REFERENCES Products(productId)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO Categories (categoryId, name) VALUES

@@ -1,5 +1,9 @@
 <?php
     include_once("link.php");
+    session_start();
+    if(!isset($_SESSION["userId"])){
+        header("Location: login.php");
+    };
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +35,7 @@
             </div>
             <div class="products">
                 <?php
-                    $query="SELECT Products.name, Products.categoryId, Products.description, Products.prize FROM Products";
+                    $query="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products";
                     $result=$link->query($query);
                     if($result->num_rows==0){
                         echo"No results.";
@@ -40,6 +44,7 @@
                         $targetId=$data["categoryId"];
                         $category=$link->query("SELECT name FROM Categories WHERE categoryId = '$targetId'")->fetch_assoc()["name"];
                         $description=$data["description"];
+                        $productId=$data["productId"];
                         $prize=round(floatval($data["prize"]),2)."€";
                         echo"<div class='card'>
                         <h3>$name</h3>
@@ -47,10 +52,37 @@
                         <span>$description</span>
                         <div class='bottom'>
                         <span>$prize</span>
-                        <button>Lisää ostoskoriin</button>
+                        <form action='' method='post'>
+                        <input type='hidden' value='$productId' name='productId'>
+                        <button type='submit' name='addItem'>Lisää ostoskoriin</button>
+                        </form>
                         </div>
                         </div>";
                     };};
+                    if(isset($_POST["addItem"])){
+                        $productId=$_POST["productId"];
+                        $userId=$_SESSION["userId"];
+                        $query="SELECT Cart.cartId FROM Cart WHERE Cart.userId LIKE '$userId'";
+                        $result=$link->query($query);
+                        if($result->num_rows==0){
+                            $time = date("Y")."-".date("m")."-".date("d");
+                            $query="INSERT INTO Orders (time) VALUES ('$time')";
+                            $result=$link->query($query);
+                            $orderId=$link->insert_id;
+                            $query="INSERT INTO Cart (orderId, userId) VALUES ('$orderId', '$userId')";
+                        }else{
+                            $query="SELECT Cart.orderId FROM Cart WHERE Cart.userId LIKE '$userId'";
+                            $orderId=$link->query($query)->fetch_assoc()["orderId"];
+                        };
+                        if(TRUE){
+                            $query="INSERT INTO CartItem (cartId, productId, amount) VALUES ('$orderId', '$productId', '1')";
+                        }else{
+                            $query="SELECT CartItem.amount FROM CartItem WHERE CartItem.cartId LIKE '$orderId' AND CartItem.productId LIKE '$productId'";
+                            $amount=intval($link->query($query)->fetch_assoc()["amount"])+1;
+                            $query="UPDATE CartItem SET CartItem.amount = '$amount' WHERE CartItem.productId LIKE '$productId' AND cartId LIKE '$orderId'";
+                            $result=$link->query($query);
+                        };
+                    };
                 ?>  
             </div>
         </main>
