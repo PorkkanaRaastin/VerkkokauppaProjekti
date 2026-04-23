@@ -4,6 +4,7 @@
     if(!isset($_SESSION["userId"])){
         header("Location: login.php");
     };
+    $userId=$_SESSION["userId"];
     if(isset($_POST["sendOrder"])){
         $name=$_POST["name"];
         $email=$_POST["email"];
@@ -20,6 +21,27 @@
                 $query="UPDATE Orders SET Orders.status = 'SENT' WHERE Orders.orderId LIKE '$orderId'";
                 $result=$link->query($query);
             };
+        };
+    };
+    if(isset($_POST["changeAmount"])){
+        $productId=$_POST["productId"];
+        $itemCount=$_POST["newAmount"];
+        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
+        $result=$link->query($query);
+        if($result->num_rows!=0){
+            $orderId=$result->fetch_assoc()["orderId"];
+            $query="UPDATE OrderItem SET OrderItem.amount = $itemCount WHERE OrderItem.orderId LIKE '$orderId' AND OrderItem.productId LIKE '$productId'";
+            $result=$link->query($query);
+        };
+    };
+    if(isset($_POST["deleteOrderItem"])){
+        $productId=$_POST["productId"];
+        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
+        $result=$link->query($query);
+        if($result->num_rows!=0){
+            $orderId=$result->fetch_assoc()["orderId"];
+            $query="DELETE FROM OrderItem WHERE OrderItem.orderId LIKE '$orderId' AND OrderItem.productId LIKE '$productId'";
+            $result=$link->query($query);
         };
     };
 ?>
@@ -73,7 +95,12 @@
                             <h3>$productName</h3>
                             <p>$category</p>
                             <div class='row'>
-                            <input type='number' value='$amount' min='1'>
+                            <form action='' method='post'>
+                            <input name='newAmount' type='number' value='$amount' min='1'>
+                            <input type='hidden' name='productId' value='$productId'>
+                            <button type='submit' name='changeAmount'>OK</button>
+                            <button type='submit' name='deleteOrderItem'>Poista ostoskorista</button>
+                            </form>
                             <span>$prize €</span>
                             </div>
                             </div>";

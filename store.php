@@ -49,13 +49,13 @@
                         $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
                         $result=$link->query($query);
                         if($result->num_rows==0){
-                            $cartItemCount=0;
+                            $OrderItemCount=0;
                         }else{
                             $orderId=$result->fetch_assoc()["orderId"];
                             $query="SELECT COUNT(DISTINCT OrderItem.productId) AS 'distinct-count' FROM OrderItem WHERE OrderItem.orderId LIKE '$orderId'";
-                            $cartItemCount=$link->query($query)->fetch_assoc()["distinct-count"];
+                            $OrderItemCount=$link->query($query)->fetch_assoc()["distinct-count"];
                         };
-                        // $cartItemCount = tavaran määrä
+                        // $OrderItemCount = tavaran määrä
                     ?>
                     <a href="cart.php">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
