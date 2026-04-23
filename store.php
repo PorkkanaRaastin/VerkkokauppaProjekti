@@ -65,20 +65,37 @@
                 </div>
             </header>
             <h1>Verkkokauppa</h1>
-            <input type="text" placeholder="Etsi tuotteita..." class="search">
-            <div class="filters">
-                <label><input type="checkbox" checked> Kaikki</label>
-                <label><input type="checkbox"> Kala</label>
-                <label><input type="checkbox"> Liha</label>
-                <label><input type="checkbox"> Viljatuotteet</label>
-                <label><input type="checkbox"> Marjat</label>
-                <label><input type="checkbox"> Juustot</label>
-                <label><input type="checkbox"> Muut tuotteet</label>
-            </div>
+            <form action="" method="post">
+                <input name="keyword" type="text" placeholder="Etsi tuotteita..." class="search">
+                <div class="filters">
+                    <label><input name="filter0" type="checkbox" checked> Kaikki</label>
+                    <label><input name="filter1" type="checkbox"> Liha</label>
+                    <label><input name="filter2" type="checkbox"> Kala</label>
+                    <label><input name="filter3" type="checkbox"> Viljatuotteet</label>
+                    <label><input name="filter4" type="checkbox"> Marjat</label>
+                    <label><input name="filter5" type="checkbox"> Juustot</label>
+                    <label><input name="filter6" type="checkbox"> Muut tuotteet</label>
+                </div>
+                <button type="submit" name="search">Hae</button>
+            </form>
             <div class="products">
                 <?php
-                    $query="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products";
-                    $result=$link->query($query);
+                    $baseQuery="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products WHERE Products.stock > '0'";
+                    if(isset($_POST["search"])){
+                        if(isset($_POST["keyword"])){
+                            $keyword=$_POST["keyword"];
+                            $baseQuery=$baseQuery." AND Products.name LIKE '%$keyword%'";
+                        };
+                        if(!isset($_POST["filter0"])){
+                            if(!isset($_POST["filter1"])){$baseQuery=$baseQuery." AND Products.categoryId <> 1";};
+                            if(!isset($_POST["filter2"])){$baseQuery=$baseQuery." AND Products.categoryId <> 2";};
+                            if(!isset($_POST["filter3"])){$baseQuery=$baseQuery." AND Products.categoryId <> 3";};
+                            if(!isset($_POST["filter4"])){$baseQuery=$baseQuery." AND Products.categoryId <> 4";};
+                            if(!isset($_POST["filter5"])){$baseQuery=$baseQuery." AND Products.categoryId <> 5";};
+                            if(!isset($_POST["filter6"])){$baseQuery=$baseQuery." AND Products.categoryId <> 6";};
+                        };
+                    };
+                    $result=$link->query($baseQuery);
                     if($result->num_rows==0){
                         echo"No results.";
                     }else{while($data=$result->fetch_assoc()){
