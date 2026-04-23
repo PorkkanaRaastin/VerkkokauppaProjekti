@@ -4,6 +4,29 @@
     if(!isset($_SESSION["userId"])){
         header("Location: login.php");
     };
+    if(isset($_POST["addItem"])){
+        $productId=$_POST["productId"];
+        $userId=$_SESSION["userId"];
+        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
+        $result=$link->query($query);
+        if($result->num_rows==0){
+            $time=date("Y")."-".date("m")."-".date("d");
+            $query="INSERT INTO Orders (time, userId, status) VALUES ('$time', '$userId', 'FILL')";
+            $result=$link->query($query);
+        };
+        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
+        $orderId=$link->query($query)->fetch_assoc()["orderId"];
+        $query="SELECT OrderItem.amount FROM OrderItem WHERE OrderItem.productId LIKE '$productId' AND OrderItem.orderId LIKE '$orderId'";
+        $result=$link->query($query);
+        if($result->num_rows==0){
+            $query="INSERT INTO OrderItem (orderId, productId, amount) VALUES ('$orderId', '$productId', '1')";
+            $result=$link->query($query);
+        }else{
+            $amount=intval($result->fetch_assoc()["amount"])+1;
+            $query="UPDATE OrderItem SET OrderItem.amount = $amount WHERE OrderItem.orderId LIKE '$orderId' AND OrderItem.productId LIKE '$productId'";
+            $result=$link->query($query);
+        };
+    };
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,6 +40,19 @@
             <header class="header">
                 <div><a href="mainpage.php"><img src="images/ALTERNATE LOGO.png" alt="logo" class="logo"></a></div>
                 <div>
+                    <?php
+                        $userId=$_SESSION["userId"];
+                        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
+                        $result=$link->query($query);
+                        if($result->num_rows==0){
+                            $cartItemCount=0;
+                        }else{
+                            $orderId=$result->fetch_assoc()["orderId"];
+                            $query="SELECT COUNT(DISTINCT OrderItem.productId) AS 'distinct-count' FROM OrderItem WHERE OrderItem.orderId LIKE '$orderId'";
+                            $cartItemCount=$link->query($query)->fetch_assoc()["distinct-count"];
+                        };
+                        // $cartItemCount = tavaran määrä
+                    ?>
                     <a href="cart.php"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
                     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
                     </svg></a>
@@ -59,29 +95,6 @@
                         </div>
                         </div>";
                     };};
-                    if(isset($_POST["addItem"])){
-                        $productId=$_POST["productId"];
-                        $userId=$_SESSION["userId"];
-                        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
-                        $result=$link->query($query);
-                        if($result->num_rows==0){
-                            $time=date("Y")."-".date("m")."-".date("d");
-                            $query="INSERT INTO Orders (time, userId, status) VALUES ('$time', '$userId', 'FILL')";
-                            $result=$link->query($query);
-                        };
-                        $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
-                        $orderId=$link->query($query)->fetch_assoc()["orderId"];
-                        $query="SELECT OrderItem.amount FROM OrderItem WHERE OrderItem.productId LIKE '$productId' AND OrderItem.orderId LIKE '$orderId'";
-                        $result=$link->query($query);
-                        if($result->num_rows==0){
-                            $query="INSERT INTO OrderItem (orderId, productId, amount) VALUES ('$orderId', '$productId', '1')";
-                            $result=$link->query($query);
-                        }else{
-                            $amount=intval($result->fetch_assoc()["amount"])+1;
-                            $query="UPDATE OrderItem SET OrderItem.amount = $amount WHERE OrderItem.orderId LIKE '$orderId' AND OrderItem.productId LIKE '$productId'";
-                            $result=$link->query($query);
-                        };
-                    };
                 ?>
             </div>
         </main>
