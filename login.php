@@ -6,11 +6,15 @@
 <html>
     <head>
         <title>Kirjaudu sisään</title>
+        <link rel="stylesheet" href="styles/homepage.css">
     </head>
     <body>
+        <nav>
+            
+        </nav>
         <div class="page" id="login">
             <h2>Kirjaudu sisään</h2>
-            <form action="login.php" method="post">
+            <form  class ="login-form" action="login.php" method="post">
                 <input type="text" name="username" placeholder="Käyttäjänimi">
                 <input type="password" name="password" placeholder="Salasana">
                 <input type="submit" name="run" value="Vahvista">
@@ -38,7 +42,8 @@
                     };
                 };
             ?>
-            <form action="" method="post">
+            <form  class ="create-account-form" action="" method="post">
+                <h2>Tai luo uusi käyttäjä</h2>
                 <input type="text" name="username" placeholder="Käyttäjänimi">
                 <input type="password" name="password" placeholder="Salasana">
                 <input type="password" name="repeatPassword" placeholder="Vahvista salasana">
