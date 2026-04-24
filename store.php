@@ -1,4 +1,5 @@
 <?php
+//Jesse tehnyt php ja rasmus muokannut html runkoa jotta tyylit saa hyvin toimimaan
     include_once("link.php");
     session_start();
     if(!isset($_SESSION["userId"])){
