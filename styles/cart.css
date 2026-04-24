@@ -1,23 +1,44 @@
+* {
+    font-family: cursive;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background: #f5f5f5;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: white;
-    border-bottom: 1px solid #ddd;
-}
-
 nav a {
     margin-right: 20px;
 }
 
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(108, 103, 103, 0.68);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    width: 130px;
+    height: auto;
+    text-align: left;
+}
+
+nav svg {
+    margin-right: 40px;
+    width: 40px;
+    height: 40px;
+}
+
 main {
     padding: 30px;
+    margin-top: 70px;
 }
 
 .container {
@@ -30,6 +51,40 @@ main {
     padding: 20px;
     border-radius: 8px;
     flex: 1;
+    max-height: 300px;
+}
+
+.cart-items {
+    overflow-y: scroll;
+}
+
+.order-form {
+    max-width: 400px;
+    background-color: rgb(222, 219, 219);
+}
+
+.order-form-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 300px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+.order-form-info input {
+    border: none;
+    border-radius: 10px;
+}
+
+.order-form-info button {
+    background-color: grey;
+}
+
+.orders button {
+    width: 200px;
+    background-color: grey;
 }
 
 .item {
