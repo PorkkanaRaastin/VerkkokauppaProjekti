@@ -113,10 +113,13 @@
                         <span>$prize</span>
                         <form action='' method='post'>
                         <input type='hidden' value='$productId' name='productId'>
-                        <button type='submit' name='addItem'>Lisää ostoskoriin</button>
-                        </form>
-                        </div>
-                        </div>";
+                        <button type='submit' name='addItem'>";
+                        if(isset($_POST["addItem"])&&$_POST["productId"]==$productId){
+                            echo"Lisätty";
+                        }else{
+                            echo"Lisää ostoskoriin";
+                        };
+                        echo"</button></form></div></div>";
                     };};
                 ?>
             </div>
