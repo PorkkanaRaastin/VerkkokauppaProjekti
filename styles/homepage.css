@@ -1,5 +1,9 @@
 /*Rasmus*/
 
+* {
+  font-family: cursive;
+}
+
 body {
   font-family: cursive, sans-serif;
   overflow-x: hidden;
@@ -61,6 +65,10 @@ nav {
   align-items: center;
 }
 
+nav a {
+  text-decoration: none;
+  color: white;
+}
 
 nav h3, button {
   margin: 15px;
@@ -149,20 +157,65 @@ footer {
 }
 
 
-/*login*/
+/*login/Register*/
 
 .page{
   text-align: center;
 }
 
+.page h2 {
+  margin-top: 70px;
+}
+
 .login-form {
-  max-width: 15%;
-  margin: auto;
-  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  width: 20%;
+}
+
+.login-form input {
+  background-color: rgba(255, 255, 255, 0.466);
+  border: none;
+  border-radius: 4px;
+  width: 200px;
+  height: 25px;
+  margin: 3px;
+  cursor: pointer;
 }
 
 .create-account-form {
-  max-width: 20%;
-  margin: auto;
-  padding: 10px;
+  text-align: center;
+  padding-top: 50px;
+  margin: 0 auto;
+  width: 20%;
+} 
+
+.create-account-form input {
+  background-color: rgba(255, 255, 255, 0.466);
+  border: none;
+  border-radius: 4px;
+  width: 200px;
+  height: 25px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #4a4747ba;
+  color: white;
+  width: 100px;
+  margin-left: 50px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.bgimage-login {
+  background-image: url("../images/benjamin-davies-Zm2n2O7Fph4-unsplash.jpeg");
+  background-size: cover;
+  background-position: center;
+  padding: 121px 20px;
+  height: 250px;
+  text-align: center;
+  color: white;
 }

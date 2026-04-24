@@ -2,7 +2,7 @@
     include_once("link.php");
     session_start();
     if(!isset($_SESSION["userId"])){
-        header("Location: login.php");
+        //header("Location: login.php");
     };
     if(isset($_POST["sendOrder"])){
         $name=$_POST["name"];
