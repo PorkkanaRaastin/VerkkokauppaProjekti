@@ -1,4 +1,5 @@
 <?php
+//Jessen tekemä
     $server="localhost";
     $user="root";
     $password="";
