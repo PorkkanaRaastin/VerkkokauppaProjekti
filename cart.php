@@ -90,6 +90,7 @@
                             $details=$link->query($query)->fetch_assoc();
                             $categoryId=$details["categoryId"];
                             $prize=round($details["prize"],2);
+                            $stackPrize=intval($amount)*floatval($prize);
                             $productName=$details["name"];
                             $description=$details["description"];
                             $query="SELECT Categories.name FROM Categories WHERE Categories.categoryId LIKE '$categoryId'";
@@ -104,10 +105,10 @@
                             <button style='color: lightgreen;' type='submit' name='changeAmount'>OK</button>
                             <button style='color: coral;' type='submit' name='deleteOrderItem'>Poista ostoskorista</button>
                             </form>
-                            <span>$prize €</span>
+                            <span>$stackPrize €</span>
                             </div>
                             </div>";
-                            $totalPrize+=($prize*$amount);
+                            $totalPrize+=($stackPrize);
                         };};
                         echo"<div class='total'>$totalPrize €</div>";
                     ?>
