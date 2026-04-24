@@ -1,4 +1,5 @@
 <?php
+    $confirmOrder=FALSE;
     include_once("link.php");
     session_start();
     if(!isset($_SESSION["userId"])){
@@ -20,6 +21,7 @@
                 $orderId=$result->fetch_assoc()["orderId"];
                 $query="UPDATE Orders SET Orders.status = 'SENT' WHERE Orders.orderId LIKE '$orderId'";
                 $result=$link->query($query);
+                $confirmOrder=TRUE;
             };
         };
     };
@@ -120,7 +122,15 @@
                         <input name="name" type="text" placeholder="Nimi">
                         <input name="email" type="email" placeholder="Sähköpostiosoite">
                         <input name="phone" type="tel" placeholder="Puhelinnumero">
-                        <button type="submit" name="sendOrder">Tee tilaus >>></button>
+                        <button type="submit" name="sendOrder">
+                            <?php
+                                if($confirmOrder==TRUE){
+                                    echo"Tilaus vastaanotettu";
+                                }else{
+                                    echo"Tee tilaus >>>";
+                                };
+                            ?>
+                        </button>
                     </form>
                 </section>
             </div>
