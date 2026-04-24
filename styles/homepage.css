@@ -168,7 +168,6 @@ footer {
 }
 
 .login-form {
-<<<<<<< HEAD
   text-align: center;
   margin: 0 auto;
   width: 20%;
@@ -219,15 +218,4 @@ footer {
   height: 250px;
   text-align: center;
   color: white;
-=======
-    max-width: 15%;
-    margin: auto;
-    padding: 10px;
-}
-
-.create-account-form {
-    max-width: 20%;
-    margin: auto;
-    padding: 10px;
->>>>>>> e80faab97de9df965fd40d6369a18ece3d08961c
 }
