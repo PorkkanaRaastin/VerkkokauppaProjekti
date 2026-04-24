@@ -83,13 +83,18 @@ main {
 }
 
 .orders button {
-    width: 200px;
+    width: 100px;
     background-color: grey;
+}
+
+.orders {
+    display: flex;
+    gap: 20px;
 }
 
 .item {
     border-bottom: 1px solid #ddd;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
 .row {

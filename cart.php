@@ -103,14 +103,14 @@
                             <input name='newAmount' type='number' value='$amount' min='1'>
                             <input type='hidden' name='productId' value='$productId'>
                             <button style='color: lightgreen;' type='submit' name='changeAmount'>OK</button>
-                            <button style='color: coral;' type='submit' name='deleteOrderItem'>Poista ostoskorista</button>
+                            <button style='color: coral;' type='submit' name='deleteOrderItem'>Poista</button>
                             </form>
                             <span>$stackPrize €</span>
                             </div>
                             </div>";
                             $totalPrize+=($stackPrize);
                         };};
-                        echo"<div class='total'>$totalPrize €</div>";
+                        echo"<div class='total'>Yhteensä: $totalPrize €</div>";
                     ?>
                 </section>
                 <section class="order-form">
