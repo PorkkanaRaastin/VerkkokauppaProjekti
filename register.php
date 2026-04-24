@@ -30,7 +30,7 @@
             $password=$_POST["password"];
             $repeatPassword=$_POST["repeatPassword"];
             $query="SELECT User.username FROM User WHERE User.username = '$username'";
-            $result $link->query($query);
+            $result=$link->query($query);
             if(empty($username)||empty($password)||empty($repeatPassword)){
                 echo"Täytä kaikki kentät";
             }else if($result->num_rows!=0){
