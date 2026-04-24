@@ -38,41 +38,64 @@
     <body>
         <main>
             <header class="header">
-                <div><a href="mainpage.php"><img src="images/ALTERNATE LOGO.png" alt="logo" class="logo"></a></div>
+                <div>
+                    <a href="mainpage.php">
+                        <img src="images/ALTERNATE LOGO.png" alt="logo" class="logo">
+                    </a>
+                </div>
                 <div>
                     <?php
                         $userId=$_SESSION["userId"];
                         $query="SELECT Orders.orderId FROM Orders WHERE Orders.userId LIKE '$userId' AND Orders.status LIKE 'FILL'";
                         $result=$link->query($query);
                         if($result->num_rows==0){
-                            $cartItemCount=0;
+                            $OrderItemCount=0;
                         }else{
                             $orderId=$result->fetch_assoc()["orderId"];
                             $query="SELECT COUNT(DISTINCT OrderItem.productId) AS 'distinct-count' FROM OrderItem WHERE OrderItem.orderId LIKE '$orderId'";
-                            $cartItemCount=$link->query($query)->fetch_assoc()["distinct-count"];
+                            $OrderItemCount=$link->query($query)->fetch_assoc()["distinct-count"];
                         };
-                        // $cartItemCount = tavaran määrä
+                        // $OrderItemCount = tavaran määrä
                     ?>
-                    <a href="cart.php"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-                    </svg></a>
+                    <a href="cart.php">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                        </svg>
+                    </a>
                 </div>
             </header>
             <h1>Verkkokauppa</h1>
-            <input type="text" placeholder="Etsi tuotteita..." class="search">
-            <div class="filters">
-                <label><input type="checkbox" checked> Kaikki</label>
-                <label><input type="checkbox"> Kala</label>
-                <label><input type="checkbox"> Liha</label>
-                <label><input type="checkbox"> Viljatuotteet</label>
-                <label><input type="checkbox"> Marjat</label>
-                <label><input type="checkbox"> Juustot</label>
-                <label><input type="checkbox"> Muut tuotteet</label>
-            </div>
+            <form action="" method="post">
+                <input name="keyword" type="text" placeholder="Etsi tuotteita..." class="search">
+                <div class="filters">
+                    <label><input name="filter0" type="checkbox" checked> Kaikki</label>
+                    <label><input name="filter1" type="checkbox"> Liha</label>
+                    <label><input name="filter2" type="checkbox"> Kala</label>
+                    <label><input name="filter3" type="checkbox"> Viljatuotteet</label>
+                    <label><input name="filter4" type="checkbox"> Marjat</label>
+                    <label><input name="filter5" type="checkbox"> Juustot</label>
+                    <label><input name="filter6" type="checkbox"> Muut tuotteet</label>
+                </div>
+                <button type="submit" name="search">Hae</button>
+            </form>
             <div class="products">
                 <?php
-                    $query="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products";
-                    $result=$link->query($query);
+                    $baseQuery="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products WHERE Products.stock > '0'";
+                    if(isset($_POST["search"])){
+                        if(isset($_POST["keyword"])){
+                            $keyword=$_POST["keyword"];
+                            $baseQuery=$baseQuery." AND Products.name LIKE '%$keyword%'";
+                        };
+                        if(!isset($_POST["filter0"])){
+                            if(!isset($_POST["filter1"])){$baseQuery=$baseQuery." AND Products.categoryId <> 1";};
+                            if(!isset($_POST["filter2"])){$baseQuery=$baseQuery." AND Products.categoryId <> 2";};
+                            if(!isset($_POST["filter3"])){$baseQuery=$baseQuery." AND Products.categoryId <> 3";};
+                            if(!isset($_POST["filter4"])){$baseQuery=$baseQuery." AND Products.categoryId <> 4";};
+                            if(!isset($_POST["filter5"])){$baseQuery=$baseQuery." AND Products.categoryId <> 5";};
+                            if(!isset($_POST["filter6"])){$baseQuery=$baseQuery." AND Products.categoryId <> 6";};
+                        };
+                    };
+                    $result=$link->query($baseQuery);
                     if($result->num_rows==0){
                         echo"No results.";
                     }else{while($data=$result->fetch_assoc()){

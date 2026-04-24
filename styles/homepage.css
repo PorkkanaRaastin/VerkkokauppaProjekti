@@ -5,29 +5,29 @@
 }
 
 body {
-  font-family: cursive, sans-serif;
-  overflow-x: hidden;
-  margin: 0;
-  color: #333;
+    font-family: cursive, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    color: #333;
 }
 
 .bgimage {
-  background-image: url("../images/benjamin-davies-Zm2n2O7Fph4-unsplash.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 60px 20px;
-  height: 250px;
-  text-align: center;
-  color: white;
+    background-image: url("../images/benjamin-davies-Zm2n2O7Fph4-unsplash.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 60px 20px;
+    height: 250px;
+    text-align: center;
+    color: white;
 }
 
 .bgimage h1 {
-  margin-top: 100px;
+    margin-top: 100px;
 }
 
 .bgimage h1, button, p {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .store-button a {
@@ -42,27 +42,27 @@ body {
 }
 
 .nav-logo {
-  width: 130px;
-  height: auto;
-  text-align: left;
+    width: 130px;
+    height: auto;
+    text-align: left;
 }
 
 
 header{
-  text-align: center;
-  padding: 40px;
+    text-align: center;
+    padding: 40px;
 }
 
 nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(108, 103, 103, 0.68);
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(108, 103, 103, 0.68);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav a {
@@ -71,77 +71,77 @@ nav a {
 }
 
 nav h3, button {
-  margin: 15px;
-  margin-right: 50px;
+    margin: 15px;
+    margin-right: 50px;
 }
 
 nav button {
-  background-color: #403d3dba;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 10px;
+    background-color: #403d3dba;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 
 .store-button {
-  background-color: #403d3d74;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 10px;
+    background-color: #403d3d74;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  list-style-position: inside;
-  padding: 0;
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-  list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    list-style-position: inside;
+    padding: 0;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    list-style: none;
 }
 
 .steps-grid li svg {
-  display: block;
-  margin: 0 auto 8px auto;
-  width: 32px;
-  height: 32px;
-  background-color: #68656588;
-  padding: 5px;
-  border-radius: 7px;
-  column-rule: white;
+    display: block;
+    margin: 0 auto 8px auto;
+    width: 32px;
+    height: 32px;
+    background-color: #68656588;
+    padding: 5px;
+    border-radius: 7px;
+    column-rule: white;
 }
 
 .steps-grid li {
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
 }
 
 .steps-grid .center-last {
-  grid-column: 2 / 3;
+    grid-column: 2 / 3;
 }
 
 
 #how-it-works h2 {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 #how-it-works {
-  margin-bottom: 70px;
+    margin-bottom: 70px;
 }
 
 footer {
-  background-color: #403d3d;
-  color: white;
-  padding: 20px;
-  text-align: center;
+    background-color: #403d3d;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 /* Responsiivisuus tekoälyn avulla */
@@ -160,7 +160,7 @@ footer {
 /*login/Register*/
 
 .page{
-  text-align: center;
+    text-align: center;
 }
 
 .page h2 {
@@ -168,6 +168,7 @@ footer {
 }
 
 .login-form {
+<<<<<<< HEAD
   text-align: center;
   margin: 0 auto;
   width: 20%;
@@ -218,4 +219,15 @@ footer {
   height: 250px;
   text-align: center;
   color: white;
+=======
+    max-width: 15%;
+    margin: auto;
+    padding: 10px;
+}
+
+.create-account-form {
+    max-width: 20%;
+    margin: auto;
+    padding: 10px;
+>>>>>>> e80faab97de9df965fd40d6369a18ece3d08961c
 }

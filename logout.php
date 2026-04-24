@@ -2,5 +2,6 @@
     session_start();
     session_unset();
     session_destroy();
-    header("Location: mainpage.php");
+    // mainpage vai login?
+    header("Location: login.php");
 ?>
