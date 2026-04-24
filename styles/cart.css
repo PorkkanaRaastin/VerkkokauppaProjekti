@@ -25,7 +25,7 @@ nav {
 }
 
 .nav-logo {
-    width: 130px;
+    width: 100px;
     height: auto;
     text-align: left;
 }
@@ -115,10 +115,17 @@ main {
     margin-bottom: 15px;
 }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #666;
+    color: white;
+    margin-top: 30px;
+}
+
 button {
     width: 100%;
     padding: 12px;
-    background: #0077ff;
     color: white;
     border: none;
     border-radius: 6px;

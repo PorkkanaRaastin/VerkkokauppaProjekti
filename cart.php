@@ -51,6 +51,7 @@
         <meta charset="UTF-8">
         <title>Ostoskori</title>
         <link rel="stylesheet" href="styles/cart.css">
+        <link rel="icon" href="images/FAVICON.png" type="image/png">
     </head>
     <body>
             <nav>

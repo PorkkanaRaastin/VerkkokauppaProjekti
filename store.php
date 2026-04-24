@@ -34,13 +34,14 @@
         <meta charset="UTF-8">
         <title>Verkkokauppa</title>
         <link rel="stylesheet" href="styles/store.css">
+        <link rel="icon" href="images/FAVICON.png" type="image/png">
     </head>
     <body>
         <main>
             <header class="header">
                 <div>
                     <a href="mainpage.php">
-                        <img src="images/ALTERNATE LOGO.png" alt="logo" class="logo">
+                        <img src="images/ALTERNATE LOGO_lapinakuva.png" alt="logo" class="logo">
                     </a>
                 </div>
                 <div>
@@ -76,7 +77,7 @@
                     <label><input name="filter5" type="checkbox"> Juustot</label>
                     <label><input name="filter6" type="checkbox"> Muut tuotteet</label>
                 </div>
-                <button type="submit" name="search">Hae</button>
+                <button style="width: 70px;" type="submit" name="search">Hae</button>
             </form>
             <div class="products">
                 <?php
@@ -108,7 +109,7 @@
                         echo"<div class='card'>
                         <h3>$name</h3>
                         <p class='category'>$category</p>
-                        <span>$description</span>
+                        <span class='description'>$description</span>
                         <div class='bottom'>
                         <span>$prize</span>
                         <form action='' method='post'>
@@ -124,5 +125,6 @@
                 ?>
             </div>
         </main>
+        <footer>By Jesse and Rasmus</footer>
     </body>
 </html>
