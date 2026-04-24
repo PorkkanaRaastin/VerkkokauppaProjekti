@@ -45,7 +45,7 @@
                 $data=$link->query($query)->fetch_assoc();
                 $_SESSION["username"]=$data["username"];
                 $_SESSION["userId"]=$data["userId"];
-                header("Location: store.php");
+                header("Location: mainpage.php");
             };
         };
     ?>

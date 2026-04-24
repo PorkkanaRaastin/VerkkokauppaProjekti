@@ -36,7 +36,7 @@
                             if(password_verify($password,$hashFormat)){
                                 $_SESSION["username"]=$data["username"];
                                 $_SESSION["userId"]=$data["userId"];
-                                header("Location: store.php");
+                                header("Location: mainpage.php");
                             }else{
                                 echo"Väärä käyttäjänimi tai salasana";
                             };
