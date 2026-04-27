@@ -1,0 +1,47 @@
+* {
+    font-family: cursive;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f5;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(108, 103, 103, 0.68);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    width: 100px;
+    height: auto;
+    text-align: left;
+}
+
+.orderlist {
+    list-style: none;
+    text-align: left;
+    max-width: 85%;
+    margin: auto;
+    display: flex;
+    gap: 50px;
+    overflow-x: scroll;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.order {
+    background-color: rgb(186, 184, 184);
+    padding: 10px;
+    border-radius: 15px;
+}

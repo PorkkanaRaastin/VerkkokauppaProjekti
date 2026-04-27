@@ -9,8 +9,13 @@
 <html>
     <head>
         <title>Tilaukset</title>
+        <link rel="stylesheet" href="styles/orders.css">
+        <link rel="icon" href="images/FAVICON.png" type="image/png">
     </head>
     <body>
+        <nav>
+            <a href="mainpage.php"><img class="nav-logo" src="images/ALTERNATE LOGO_lapinakuva.png" alt=""></a>
+        </nav>
         <h1>Omat tilaukset</h1>
         <div class="orderlist">
             <?php

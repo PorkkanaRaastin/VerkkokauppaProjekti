@@ -80,6 +80,7 @@
                 </div>
                 <button style="width: 70px;" type="submit" name="search">Hae</button>
             </form>
+            <a href="orders.php"><button>Tilaukset</button></a>
             <div class="products">
                 <?php
                     $baseQuery="SELECT Products.name, Products.categoryId, Products.description, Products.prize, Products.productId FROM Products WHERE Products.stock > '0'";
