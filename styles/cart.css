@@ -33,10 +33,10 @@ nav {
     text-align: left;
 }
 
-nav svg {
+.svg img {
     margin-right: 40px;
     width: 40px;
-    height: 40px;
+    height: auto;
 }
 
 main {
