@@ -68,13 +68,24 @@
             <form action="" method="post">
                 <input name="keyword" type="text" placeholder="Etsi tuotteita..." class="search">
                 <div class="filters">
-                    <label><input name="filter0" type="checkbox" checked> Kaikki</label>
-                    <label><input name="filter1" type="checkbox"> Liha</label>
-                    <label><input name="filter2" type="checkbox"> Kala</label>
-                    <label><input name="filter3" type="checkbox"> Viljatuotteet</label>
-                    <label><input name="filter4" type="checkbox"> Marjat</label>
-                    <label><input name="filter5" type="checkbox"> Juustot</label>
-                    <label><input name="filter6" type="checkbox"> Muut tuotteet</label>
+                    <?php
+                        $val=" checked='true'"
+                    ?>
+                    <label><input name="f0" type="checkbox"<?php
+                        if(isset($_POST["f0"])||(!isset($_POST["f1"])&&!isset($_POST["f2"])&&!isset($_POST["f3"])&&!isset($_POST["f4"])&&!isset($_POST["f5"])&&!isset($_POST["f6"]))){echo$val;};
+                    ?>> Kaikki</label>
+                    <label><input name="f1" type="checkbox"<?php
+                        if(isset($_POST["f1"])){echo$val;};?>> Liha</label>
+                    <label><input name="f2" type="checkbox"<?php
+                        if(isset($_POST["f2"])){echo$val;};?>> Kala</label>
+                    <label><input name="f3" type="checkbox"<?php
+                        if(isset($_POST["f3"])){echo$val;};?>> Viljatuotteet</label>
+                    <label><input name="f4" type="checkbox"<?php
+                        if(isset($_POST["f4"])){echo$val;};?>> Marjat</label>
+                    <label><input name="f5" type="checkbox"<?php
+                        if(isset($_POST["f5"])){echo$val;};?>> Juustot</label>
+                    <label><input name="f6" type="checkbox"<?php
+                        if(isset($_POST["f6"])){echo$val;};?>> Muut tuotteet</label>
                 </div>
                 <button style="width: 70px;" type="submit" name="search">Hae</button>
             </form>
@@ -87,13 +98,13 @@
                             $keyword=$_POST["keyword"];
                             $baseQuery=$baseQuery." AND Products.name LIKE '%$keyword%'";
                         };
-                        if(!isset($_POST["filter0"])){
-                            if(!isset($_POST["filter1"])){$baseQuery=$baseQuery." AND Products.categoryId <> 1";};
-                            if(!isset($_POST["filter2"])){$baseQuery=$baseQuery." AND Products.categoryId <> 2";};
-                            if(!isset($_POST["filter3"])){$baseQuery=$baseQuery." AND Products.categoryId <> 3";};
-                            if(!isset($_POST["filter4"])){$baseQuery=$baseQuery." AND Products.categoryId <> 4";};
-                            if(!isset($_POST["filter5"])){$baseQuery=$baseQuery." AND Products.categoryId <> 5";};
-                            if(!isset($_POST["filter6"])){$baseQuery=$baseQuery." AND Products.categoryId <> 6";};
+                        if(!isset($_POST["f0"])){
+                            if(!isset($_POST["f1"])){$baseQuery=$baseQuery." AND Products.categoryId <> 1";};
+                            if(!isset($_POST["f2"])){$baseQuery=$baseQuery." AND Products.categoryId <> 2";};
+                            if(!isset($_POST["f3"])){$baseQuery=$baseQuery." AND Products.categoryId <> 3";};
+                            if(!isset($_POST["f4"])){$baseQuery=$baseQuery." AND Products.categoryId <> 4";};
+                            if(!isset($_POST["f5"])){$baseQuery=$baseQuery." AND Products.categoryId <> 5";};
+                            if(!isset($_POST["f6"])){$baseQuery=$baseQuery." AND Products.categoryId <> 6";};
                         };
                     };
                     $result=$link->query($baseQuery);
